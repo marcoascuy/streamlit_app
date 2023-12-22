@@ -1,6 +1,10 @@
 # librerías
 import streamlit as st
 import base64  
+import os
+
+# cerciorarse de que existe archivo uploaded_files
+os.makedirs("uploaded_files", exist_ok=True)
 
 # definiendo secciones
 
@@ -37,6 +41,9 @@ def upload_section():
 
     # Sube el archivo
     if file is not None:
+        # Guarda el archivo en uploaded files
+        st.write_file("uploaded_files.zip", file)
+
         # Guarda el archivo en la memoria
         data = file.read()
 
